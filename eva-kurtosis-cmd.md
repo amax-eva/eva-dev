@@ -48,6 +48,8 @@ ENV:
 
 ## beacon 共识层
 
+* 信标链
+
 > kurtosis service inspect evatest2 cl-1-prysm-erigon
 
 ```
@@ -98,3 +100,31 @@ ENV:
   SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
 ```
 
+* 验证出块
+
+> kurtosis service inspect evatest2 vc-1-erigon-prysm
+
+```
+Name: vc-1-erigon-prysm
+UUID: f94f7113c806
+Status: RUNNING
+Image: gcr.io/offchainlabs/prysm/validator:stable
+Ports:
+  metrics: 8080/tcp -> http://127.0.0.1:32803
+ENTRYPOINT:
+  /validator
+CMD:
+  --accept-terms-of-use=true
+  --chain-config-file=/network-configs/config.yaml
+  --suggested-fee-recipient=0x8943545177806ED17B9F23F0a21ee5948eCaa776
+  --beacon-rest-api-provider=http://172.16.8.12:3500
+  --disable-monitoring=false
+  --monitoring-host=0.0.0.0
+  --monitoring-port=8080
+  --beacon-rpc-provider=172.16.8.12:4000
+  --wallet-dir=/validator-keys/prysm
+  --wallet-password-file=/prysm-password/prysm-password.txt
+ENV:
+  PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  SSL_CERT_FILE: /etc/ssl/certs/ca-certificates.crt
+```
