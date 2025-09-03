@@ -19,7 +19,13 @@ ENTRYPOINT:
   sh
   -c
 CMD:
-  erigon init --datadir=/data/erigon/execution-data /network-configs/genesis.json && erigon --networkid=3151908 --log.console.verbosity=3 --datadir=/data/erigon/execution-data --port=30303 --http.api=eth,erigon,engine,web3,net,debug,trace,txpool,admin --http.vhosts=* --ws --allow-insecure-unlock --nat=extip:172.16.8.11 --http --http.addr=0.0.0.0 --http.corsdomain=* --http.port=8545 --authrpc.jwtsecret=/jwt/jwtsecret --authrpc.addr=0.0.0.0 --authrpc.port=8551 --authrpc.vhosts=* --externalcl --metrics --metrics.addr=0.0.0.0 --metrics.port=9001 --torrent.port=42069
+  erigon init --datadir=/data/erigon/execution-data /network-configs/genesis.json
+
+  erigon --networkid=3151908 --log.console.verbosity=3 --datadir=/data/erigon/execution-data --port=30303
+    --http.api=eth,erigon,engine,web3,net,debug,trace,txpool,admin
+    --http.vhosts=* --ws --allow-insecure-unlock --nat=extip:172.16.8.11 --http --http.addr=0.0.0.0 --http.corsdomain=*
+    --http.port=8545 --authrpc.jwtsecret=/jwt/jwtsecret --authrpc.addr=0.0.0.0 --authrpc.port=8551 --authrpc.vhosts=*
+    --externalcl --metrics --metrics.addr=0.0.0.0 --metrics.port=9001 --torrent.port=42069
 ENV:
   PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ```
