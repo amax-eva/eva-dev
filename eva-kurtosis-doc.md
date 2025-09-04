@@ -21,3 +21,7 @@ INFO[2025-09-04T02:45:33Z] Enclaves stopped successfully
 
 > kurtosis enclave start evatest2
 
+* 停止引擎
+
+> kurtosis engine stop
+
